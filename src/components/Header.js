@@ -2,24 +2,34 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 
-const Header = ()=> {
+
+const Header = (props) => {
     return (
         <header className="header">
-<nav>
-    <ul>
-        <li>
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">About</a>
-        </li>
-        <li>
-            <a href="#">Contact us</a>
-        </li>
-    </ul>
-</nav>
-        </header>
-    )
-};
+            <div className="container">
+                <a href="" className="logo">
+                    My logo
+                </a>
+                <nav>
+                    <ul className="nav-list">
+                        {
+                            props.navigationList.map((string)=> {
+                                return (
+                                    <li key={string} className="nav-list__item">
+                                        <a href="/">
+                                            {string}
+                                        </a>
+                                    </li>
+                                )
+                            })}
+                    </ul>
+                </nav>
+            </div>
+        </header>)
+}
+
+Header.propTypes = {
+    navigationList: PropTypes.arrayOf(PropTypes.string).isRequired,
+}
 
 export default Header;
